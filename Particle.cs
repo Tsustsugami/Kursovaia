@@ -17,6 +17,8 @@ namespace Kursovaia
         public float Y; 
         public float Life;
         public static Random rand = new Random();
+        public Color FromColor;
+        public Color ToColor;
         public Particle()
         {
             var direction = (double)rand.Next(360);
@@ -26,22 +28,6 @@ namespace Kursovaia
             Radius = 2 + rand.Next(10);
             Life = 20 + rand.Next(100);
         }
-        public virtual void Draw(Graphics g)
-        {
-            float k = Math.Min(1f, Life / 100);
-            int alpha = (int)(k * 255);
-            var color = Color.FromArgb(alpha, Color.Black);
-            var b = new SolidBrush(color);
-
-            g.FillEllipse(b, X - Radius, Y - Radius, Radius * 2, Radius * 2);
-
-            b.Dispose();
-        }
-    }
-    public class ParticleColorful : Particle
-    {
-        public Color FromColor;
-        public Color ToColor;
         public static Color MixColor(Color color1, Color color2, float k)
         {
             return Color.FromArgb(
@@ -51,7 +37,7 @@ namespace Kursovaia
                 (int)(color2.B * k + color1.B * (1 - k))
             );
         }
-        public override void Draw(Graphics g)
+        public virtual void Draw(Graphics g)
         {
             float k = Math.Min(1f, Life / 100);
 

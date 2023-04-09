@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Kursovaia
 {
@@ -28,7 +29,7 @@ namespace Kursovaia
                 X = (float)(picDisplay.Width * 0.1),
                 Y = picDisplay.Height / 2,
                 color = Color.Aqua
-            }) ;
+            });
             emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.2),
@@ -45,7 +46,7 @@ namespace Kursovaia
             {
                 X = (float)(picDisplay.Width * 0.4),
                 Y = picDisplay.Height / 2,
-                color =Color.BlueViolet
+                color = Color.BlueViolet
             });
             emitter.impactPoints.Add(new GravityPoint
             {

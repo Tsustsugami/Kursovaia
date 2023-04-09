@@ -9,7 +9,7 @@ namespace Kursovaia
 {
     public class Emmiter
     {
-        List<Particle> particles = new List<Particle>();
+        public List<Particle> particles = new List<Particle>();
         public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
         public float GravitationX = 0;
         public float GravitationY = 1;
@@ -55,7 +55,7 @@ namespace Kursovaia
             {
                 if (particles.Count < ParticlesCount) 
                 {
-                    var particle = new ParticleColorful();
+                    var particle = new Particle();
                     particle.FromColor = Color.White;
                     particle.ToColor = Color.FromArgb(0, Color.Black);
                     particles.Add(particle);

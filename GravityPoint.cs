@@ -12,13 +12,17 @@ namespace Kursovaia
     {
         public int size = 100;
         public int Power = 100; 
-        public Color color= Color.White;
+        public Color color;
         public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
 
             double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
+            if (r + particle.Radius < Power / 2)  // если частица оказалось внутри окружности
+            {
+                particle.FromColor = color;
+            }
             if (r + particle.Radius < Power / 2) // если частица оказалось внутри окружности
             {
                 // то притягиваем ее
