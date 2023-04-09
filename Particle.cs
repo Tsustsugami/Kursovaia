@@ -29,10 +29,7 @@ namespace Kursovaia
         }
         public virtual void Draw(Graphics g)
         {
-            // рассчитываем коэффициент прозрачности по шкале от 0 до 1.0
             float k = Math.Min(1f, Life / 100);
-            // рассчитываем значение альфа канала в шкале от 0 до 255
-            // по аналогии с RGB, он используется для задания прозрачности
             int alpha = (int)(k * 255);
             var color = Color.FromArgb(alpha, Color.Black);
             // создали кисть для рисования
