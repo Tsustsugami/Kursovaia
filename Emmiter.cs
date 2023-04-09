@@ -19,7 +19,7 @@ namespace Kursovaia
         public int RadiusMin = 2; 
         public int RadiusMax = 10; 
         public int LifeMin = 20;
-        public int LifeMax = 100; 
+        public int LifeMax = 200; 
         public int ParticlesPerTick = 1;
         public void UpdateState()
         {
@@ -80,6 +80,7 @@ namespace Kursovaia
         }
         public virtual void ResetParticle(Particle particle)
         {
+
             particle.Life = Particle.rand.Next(LifeMin, LifeMax);
             var speed = Particle.rand.Next(SpeedMin, SpeedMax);
             particle.Radius = Particle.rand.Next(RadiusMin, RadiusMax);

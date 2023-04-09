@@ -27,56 +27,50 @@ namespace Kursovaia
             emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.1),
-                Y = picDisplay.Height / 2,
+                Y = 200,
                 color = Color.Aqua
             });
             emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.2),
-                Y = picDisplay.Height / 2,
+                Y = 200,
                 color = Color.Gray
             });
             emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.3),
-                Y = picDisplay.Height / 2,
+                Y = 200,
                 color = Color.DeepPink
             });
             emitter.impactPoints.Add(new GravityPoint
             {
                 X = (float)(picDisplay.Width * 0.4),
-                Y = picDisplay.Height / 2,
+                Y = 200,
                 color = Color.BlueViolet
             });
             emitter.impactPoints.Add(new GravityPoint
             {
-                X = (float)(picDisplay.Width * 0.5),
-                Y = picDisplay.Height / 2,
+                X = (float)(picDisplay.Width * 0.1),
+                Y = 600,
                 color = Color.Red
             });
             emitter.impactPoints.Add(new GravityPoint
             {
-                X = (float)(picDisplay.Width * 0.6),
-                Y = picDisplay.Height / 2,
-                color = Color.AliceBlue
+                X = (float)(picDisplay.Width * 0.2),
+                Y = 600,
+                color = Color.Orange
             });
             emitter.impactPoints.Add(new GravityPoint
             {
-                X = (float)(picDisplay.Width * 0.7),
-                Y = picDisplay.Height / 2,
+                X = (float)(picDisplay.Width * 0.3),
+                Y = 600,
                 color = Color.Purple
             });
             emitter.impactPoints.Add(new GravityPoint
             {
-                X = (float)(picDisplay.Width * 0.8),
-                Y = picDisplay.Height / 2,
+                X = (float)(picDisplay.Width * 0.4),
+                Y = 600,
                 color = Color.OliveDrab
-            });
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(picDisplay.Width * 0.9),
-                Y = picDisplay.Height / 2,
-                color = Color.Orange
             });
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -85,7 +79,7 @@ namespace Kursovaia
             using (var g = Graphics.FromImage(picDisplay.Image))
             {
                 g.Clear(Color.Black);
-                emitter.Render(g); // а тут теперь рендерим через эмиттер
+                emitter.Render(g);
                 picDisplay.Invalidate();
             }
         }
@@ -97,7 +91,21 @@ namespace Kursovaia
         private void tbDirection_Scroll(object sender, EventArgs e)
         {
             emitter.ParticlesCount = tbDirection.Value;
-            tbDirection.Text = $"{tbDirection.Value}°"; // добавил вывод значения
         }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            int count = 1;
+            foreach (IImpactPoint impactPoint in emitter.impactPoints)
+            {
+                impactPoint.X = trackBar1.Value + 140 * count;
+                count++;
+                if (count == 5){
+                    count = 1;
+                }
+            }
+            
+        }
+
     }
 }

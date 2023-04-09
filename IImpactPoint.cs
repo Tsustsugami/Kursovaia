@@ -16,7 +16,7 @@ namespace Kursovaia
         {
             g.FillEllipse(
                     new SolidBrush(Color.Red),
-                    X - 5,
+                    X - 1,
                     Y - 5,
                     10,
                     10
