@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,30 +10,33 @@ namespace Kursovaia
     public class GravityPoint : IImpactPoint
 
     {
-        public int Power = 100; // сила притяжения
+        public int size = 100;
+        public int Power = 100; 
+        public Color color= Color.White;
         public override void ImpactParticle(Particle particle)
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
-            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
 
-            particle.SpeedX += gX * Power / r2;
-            particle.SpeedY += gY * Power / r2;
+            double r = Math.Sqrt(gX * gX + gY * gY); // считаем расстояние от центра точки до центра частицы
+            if (r + particle.Radius < Power / 2) // если частица оказалось внутри окружности
+            {
+                // то притягиваем ее
+                float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+                particle.SpeedX += gX * Power / r2;
+                particle.SpeedY += gY * Power / r2;
+            }
+
         }
-    }
-    public class AntiGravityPoint : IImpactPoint
-    {
-        public int Power = 100; // сила отторжения
-
-        // а сюда по сути скопировали с минимальными правками то что было в UpdateState
-        public override void ImpactParticle(Particle particle)
+        public override void Render(Graphics g)
         {
-            float gX = X - particle.X;
-            float gY = Y - particle.Y;
-            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
-
-            particle.SpeedX -= gX * Power / r2; // тут минусики вместо плюсов
-            particle.SpeedY -= gY * Power / r2; // и тут
+            g.DrawEllipse(
+                   new Pen(color),
+                   X - size / 2,
+                   Y - size / 2,
+                   size,
+                   size
+               );
         }
     }
 }

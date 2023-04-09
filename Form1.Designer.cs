@@ -38,9 +38,9 @@
             // 
             // picDisplay
             // 
-            this.picDisplay.Location = new System.Drawing.Point(12, 1);
+            this.picDisplay.Location = new System.Drawing.Point(12, -49);
             this.picDisplay.Name = "picDisplay";
-            this.picDisplay.Size = new System.Drawing.Size(1400, 1000);
+            this.picDisplay.Size = new System.Drawing.Size(1400, 800);
             this.picDisplay.TabIndex = 0;
             this.picDisplay.TabStop = false;
             this.picDisplay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picDisplay_MouseMove);
@@ -54,7 +54,7 @@
             // tbDirection
             // 
             this.tbDirection.Location = new System.Drawing.Point(12, 407);
-            this.tbDirection.Maximum = 360;
+            this.tbDirection.Maximum = 1000;
             this.tbDirection.Name = "tbDirection";
             this.tbDirection.Size = new System.Drawing.Size(104, 45);
             this.tbDirection.TabIndex = 1;
